@@ -1,0 +1,60 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: #ededf4;
+	font-size: 12pt;
+}
+
+.wrap {
+	width: 90%;
+	max-width: 828px;
+	margin: 0 auto;
+}
+
+.row {
+	margin: 0 0 1em;
+	text-align: center;
+}
+
+.row.header {
+	margin: 1em 0;
+	text-align: left;
+}
+
+.row.header,
+.row.photo {
+	padding: 0 1%;
+}
+
+.row.photo img,
+.button img {
+	width: 100%;
+	height: auto;
+}
+
+.button {
+	display: block;
+	width: 33.3%;
+	position: relative;
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
+
+
+@media only screen and (max-width: 450px) {
+
+	.button {
+		display: inline;
+		width: auto;
+		position: relative;
+		float: none;
+	}
+	.button img {
+		width: auto;
+		height: auto;
+	}
+	
+}

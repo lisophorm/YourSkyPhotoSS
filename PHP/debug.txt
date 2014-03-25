@@ -1,0 +1,15 @@
+Array
+(
+    [emailAddress] => user@address.com
+    [lastName] => userLastName
+    [addressLineOne] => userAddressLineOne
+    [addressLineTwo] => userAddressLineTwo
+    [firstName] => userFirstName
+    [mobileNumber] => 0733234202
+    [postcode] => BBV 33D
+    [existingBroadbandCustomer] => 1
+    [existingTVCustomer] => 0
+    [backgroundId] => 2
+    [uuid] => UUID-233423
+)
+Unknown column 'email' in 'field list' INSERT  INTO `users` SET `firstName` = 'userFirstName', `email` = ''
