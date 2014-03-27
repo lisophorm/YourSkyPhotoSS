@@ -247,13 +247,15 @@ $tw_share_text = str_replace('##landing_link##', $user['shortlink'], $share_text
 					
 					<table align="center" border="0" cellpadding="0" cellspacing="0" width="542">
 						<tr>
-							<td width="267" style="width:250px;padding-left:3px;padding-right:14px;" valign="top">
-							
+							<td width="3"><img src="https://www.yourskyphoto.co.uk/assets/img/blank.gif" alt="" width="3" height="1" /></td>
+							<td width="250">
+								<img src="https://www.yourskyphoto.co.uk/assets/img/blank.gif" alt="" width="250" height="1" />
 								<?php echo $message; ?>	
 													
 							</td>
+							<td width="14"><img src="https://www.yourskyphoto.co.uk/assets/img/blank.gif" alt="" width="14" height="1" /></td>
 							<td width="272" valign="top">
-							
+								<img src="https://www.yourskyphoto.co.uk/assets/img/blank.gif" alt="" width="272" height="1" />
 								<table align="center" border="0" cellpadding="0" cellspacing="0" width="272">
 									<tr>	
 										<td background="https://www.yourskyphoto.co.uk/assets/img/box.gif" bgcolor="#f4f4f9" width="272" height="206" style="width:266px;height:200px;padding:1px 3px 5px 3px;" align="center">
@@ -285,22 +287,29 @@ $tw_share_text = str_replace('##landing_link##', $user['shortlink'], $share_text
 				<?php if($friends): ?><tr><td style="padding-top:12px">
 					<table align="center" border="0" cellpadding="0" cellspacing="0" width="544">
 						<tr><td>
-							<a href="<?php echo $friend_link ?>"><img src="assets/img/friends_invite.gif" alt="Friends Invite" width="544" height="103" /></a>
+							<a href="<?php echo $friend_link ?>"><img src="https://www.yourskyphoto.co.uk/assets/img/friends_invite.gif" alt="Friends Invite" width="544" height="103" /></a>
 						</td></tr>
 					</table>
 				</td></tr><?php endif; ?>
 				<?php if($whats_on): ?><tr><td style="padding-top:19px">
 					<table align="center" border="0" cellpadding="0" cellspacing="0" width="538">
 						<tr><td>
-							<img src="assets/img/whats_on_title.jpg" alt="What's on this month" width="229" height="18" />
+							<img src="https://www.yourskyphoto.co.uk/assets/img/whats_on_title.jpg" alt="What's on this month" width="229" height="18" />
 						</td></tr>
 						<tr><td style="padding-top:16px">
-							<img src="assets/img/whats_on_panel_1.gif" alt="whats_on_panel_1" width="183" height="182" /><img src="assets/img/whats_on_panel_2.jpg" alt="whats_on_panel_2" width="174" height="182" /><img src="assets/img/whats_on_panel_3.jpg" alt="whats_on_panel_3" width="160" height="182" /><img src="assets/img/whats_on_panel_4.gif" alt="whats_on_panel_4" width="20" height="182" />
+							<table align="center" border="0" cellpadding="0" cellspacing="0" width="538">
+								<tr>
+									<td><img src="https://www.yourskyphoto.co.uk/assets/img/whats_on_panel_1.gif" alt="whats_on_panel_1" width="183" height="182" /></td>
+									<td><img src="https://www.yourskyphoto.co.uk/assets/img/whats_on_panel_2.jpg" alt="whats_on_panel_2" width="174" height="182" /></td>
+									<td><img src="https://www.yourskyphoto.co.uk/assets/img/whats_on_panel_3.jpg" alt="whats_on_panel_3" width="160" height="182" /></td>
+									<td><img src="https://www.yourskyphoto.co.uk/assets/img/whats_on_panel_4.gif" alt="whats_on_panel_4" width="20" height="182" /></td>
+								</tr>
+							</table>
 						</td></tr>
 					</table>
 				</td></tr><?php endif; ?>
 				<tr><td style="padding-top:19px;" align="center">
-					<img src="assets/img/sky_logo.gif" alt="sky_logo" width="99" height="74" />
+					<img src="https://www.yourskyphoto.co.uk/assets/img/sky_logo.gif" alt="sky_logo" width="99" height="74" />
 				</td></tr>
 				<tr><td style="padding:13px 150px 50px 150px" align="center">
 					<p style="<?php echo $style_p_small ?>margin-bottom:20px;">For full terms and conditions <a href="<?php echo $terms_link ?>" style="<?php echo $style_dark_link ?>">click here</a></p>
