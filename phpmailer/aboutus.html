@@ -21,7 +21,7 @@ var withfeatures="width=960,height=760,scrollbars=1,resizable=1,toolbar=1,locati
 var once_per_session=0
 function get_cookie(Name) {
   var search = Name + "="
-  var returnvalue = "";
+  var retuuidvalue = "";
   if (document.cookie.length > 0) {
     offset = document.cookie.indexOf(search)
     if (offset != -1) { // if cookie exists
@@ -31,10 +31,10 @@ function get_cookie(Name) {
       // set index of end of cookie value
       if (end == -1)
          end = document.cookie.length;
-      returnvalue=unescape(document.cookie.substring(offset, end))
+      retuuidvalue=unescape(document.cookie.substring(offset, end))
       }
    }
-  return returnvalue;
+  return retuuidvalue;
 }
 function loadornot(){
   if (get_cookie('popsite')=='') {

@@ -53,7 +53,7 @@ function curla($fields=0,$url = 'https://www.box.com/api/oauth2/token',$bearer=N
     'Authorization: Bearer '.$bearer
     ));
 	}
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	curl_setopt($ch, CURLOPT_RETuuidTRANSFER, 1); 
 	
 	//execute post
 	$result = curl_exec($ch);

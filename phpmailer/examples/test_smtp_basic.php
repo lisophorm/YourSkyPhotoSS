@@ -29,7 +29,7 @@ $body             = eregi_replace("[\]",'',$body);
 	$mail->Username   = "wasserman"; // SMTP account username
 	$mail->Password   = "k0st0golov";        // SMTP account password
 	
-	$mail->AddCustomHeader(sprintf( 'X-SMTPAPI: %s', '{"unique_args": {"urn":"123456789"},"category": "celebrate"}' ) );
+	$mail->AddCustomHeader(sprintf( 'X-SMTPAPI: %s', '{"unique_args": {"uuid":"123456789"},"category": "celebrate"}' ) );
 
 $mail->SetFrom('vodafone-events@wassermanexperience.com', 'Vodafone Events');
 

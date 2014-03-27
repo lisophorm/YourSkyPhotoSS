@@ -120,7 +120,7 @@ class phpmailerTest extends PHPUnit_Framework_TestCase {
     /**
      * Build the body of the message in the appropriate format.
      * @private
-     * @returns void
+     * @retuuids void
      */
     function BuildBody() {
         $this->CheckChanges();
@@ -202,7 +202,7 @@ class phpmailerTest extends PHPUnit_Framework_TestCase {
     /**
      * Check which default settings have been changed for the report.
      * @private
-     * @returns void
+     * @retuuids void
      */
     function CheckChanges() {
         if($this->Mail->Priority != 3)
@@ -228,7 +228,7 @@ class phpmailerTest extends PHPUnit_Framework_TestCase {
     /**
      * Adds a change entry.
      * @private
-     * @returns void
+     * @retuuids void
      */
     function AddChange($sName, $sNewValue) {
         $cur = count($this->ChangeLog);
@@ -239,7 +239,7 @@ class phpmailerTest extends PHPUnit_Framework_TestCase {
     /**
      * Adds a simple note to the message.
      * @public
-     * @returns void
+     * @retuuids void
      */
     function AddNote($sValue) {
         $this->NoteLog[] = $sValue;
@@ -248,7 +248,7 @@ class phpmailerTest extends PHPUnit_Framework_TestCase {
     /**
      * Adds all of the addresses
      * @public
-     * @returns void
+     * @retuuids void
      */
     function SetAddress($sAddress, $sName = "", $sType = "to") {
         switch($sType)

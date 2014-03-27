@@ -110,7 +110,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$std
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function redirectOutput( $std )
@@ -124,7 +124,7 @@ class FFmpeg
 	/**
 	* @param	string	$output			Output file path
 	* @param	string	$forceFormat	Force format output
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function output( $output , $forceFormat = null )
@@ -167,7 +167,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$forceFormat	Force format output
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function forceFormat( $forceFormat )
@@ -185,7 +185,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$file	input file path
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function input( $file )
@@ -205,7 +205,7 @@ class FFmpeg
 	* @param	string	$size
 	* @param	string	$start
 	* @param	string	$videoFrames
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function thumb( $size , $start , $videoFrames = 1 )
@@ -228,7 +228,7 @@ class FFmpeg
 		return $this;
 	}
 	/**
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function clear()
@@ -238,7 +238,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$transpose	http://ffmpeg.org/ffmpeg.html#transpose
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function transpose( $transpose = 0 )
@@ -250,25 +250,25 @@ class FFmpeg
 		return $this;
 	}
 	/**
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function vflip()
 	{
 		$this->options['vf']['vflip'] = null;
-		Return $this;
+		return $this;
 	}
 	/**
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function hflip()
 	{
 		$this->options['vf']['hflip'] = null;
-		Return $this;
+		return $this;
 	}
 	/**
-	* @return	object	Return self
+	* @return	object	return self
 	* @param	$flip	v OR h
 	* @access	public
 	*/
@@ -290,7 +290,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$aspect	sample aspect ratio
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function aspect( $aspect )
@@ -299,7 +299,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$b	set bitrate (in bits/s)
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function bitrate( $b )
@@ -308,7 +308,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$r	Set frame rate (Hz value, fraction or abbreviation).
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function frameRate( $r )
@@ -321,7 +321,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$s	Set frame size.
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function size( $s )
@@ -336,7 +336,7 @@ class FFmpeg
 	* When used as an input option (before "input"), seeks in this input file to position. When used as an output option (before an output filename), decodes but discards input until the timestamps reach position. This is slower, but more accurate.
 	*
 	* @param	string	$s	position may be either in seconds or in hh:mm:ss[.xxx] form.
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function position( $ss )
@@ -345,7 +345,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$t	Stop writing the output after its duration reaches duration. duration may be a number in seconds, or in hh:mm:ss[.xxx] form.
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function duration( $t )
@@ -356,7 +356,7 @@ class FFmpeg
 	* Set the input time offset in seconds. [-]hh:mm:ss[.xxx] syntax is also supported. The offset is added to the timestamps of the input files.
 	*
 	* @param	string	$t	Specifying a positive offset means that the corresponding streams are delayed by offset seconds.
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function itsoffset( $itsoffset )
@@ -407,7 +407,7 @@ class FFmpeg
 	}
 	/**
 	* @param	string	$number
-	* @return	object	Return self
+	* @return	object	return self
 	* @access	public
 	*/
 	public function videoFrames( $number )
@@ -469,7 +469,7 @@ class FFmpeg
 		return $this;
 	}
 	/**
-	* @return	object	Return self
+	* @return	object	return self
 	* @param	string	$append
 	* @access	public
 	*/
@@ -478,7 +478,7 @@ class FFmpeg
 		return exec( $this->command . $append );
 	}
 	/**
-	* @return	object	Return self
+	* @return	object	return self
 	* @param	string	ffmpeg
 	* @access	public
 	*/

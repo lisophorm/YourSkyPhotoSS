@@ -1,10 +1,72 @@
 <?php  
+require_once( 'Connections/php.mysql.class.php' );
+error_reporting( E_ALL );
+$db = new MySQL( DB, DBUSER, DBPASS );
+
+
+
+$user = $db->ExecuteSQL( "SELECT
+users.id,
+users.isSynced,
+users.usertype,
+users.uuid,
+users.tablet_id,
+users.firstName,
+users.lastName,
+users.emailAddress,
+users.addressLineOne,
+users.addressLineTwo,
+users.mobileNumber,
+users.postcode,
+users.existingBroadbandCustomer,
+users.backgroundId,
+users.existingTVCustomer,
+users.current_location,
+users.added,
+users.server_result,
+users.posts,
+users.last_scrape,
+users.offline,
+users.winner,
+userphoto.uuid,
+userphoto.filename,
+userphoto.shortlink
+FROM
+users
+INNER JOIN userphoto ON users.uuid = userphoto.uuid 
+where users.uuid='".$_GET['uuid']."' limit 1" );
+//var_dump($user);
+//echo "error:".$db->lastError;
+if ( !$user ) {
+    die( "mysql error:" + $db->lastError + " query:" + $db->lastQuery );
+} else {
+   // var_dump( $user );
+}
+
 
 // URL FUNCTION
 function shortenURL($url) {
 	$result=file_get_contents("http://is.gd/create.php?format=simple&url=".$url);
 	return $result;
 }
+
+	if(trim($user['existingBroadbandCustomer'])=="1" && trim($user['existingTVCustomer'])=="1") {
+		$cust_type = 'tpc';
+	} else if(trim($user['existingTVCustomer'])==1) {
+		$cust_type = 'sabb';
+	} else if(trim($user['existingBroadbandCustomer'])==1) {
+		$cust_type = 'snbb';
+	} else {
+		$cust_type = 'nsc';
+	}
+	
+	if($user['backgroundId']==0) {
+		$photo_type="goth";
+	} else if ($user['backgroundId']==1) {
+		$photo_type="bbsh";
+	} else {
+		$photo_type="dsny";
+	}
 
 // EMAILER URLS
 
@@ -15,18 +77,19 @@ $photo_landing_url_twitter = 'https://www.yourskyphoto.co.uk/photo/tw/';
 
 // USER CONFIG
 
-$cust_type = $_GET['cust_type'];
-$photo_type = $_GET['photo_type'];
-$name = $_GET['name'];
-$urn = $_GET['urn'];
-$small_photo_url = $_GET['small_photo_url'];
-$original_photo_url = $_GET['original_photo_url']; 
+
+	$uuid = $user[ 'uuid' ];
+	$name = ucwords($user[ 'firstName' ]);
+	$small_photo_url = 'https://www.yourskyphoto.co.uk/thumbs/'. $user[ 'filename' ];
+	$original_photo_url = 'https://www.yourskyphoto.co.uk/upload/'.$user[ 'filename' ];
 
 // USER LINKS
 
-$user_landing_url = $photo_landing_url.$urn;
-$user_landing_url_fb = shortenURL($photo_landing_url_fb.$urn);
-$user_landing_url_twitter = shortenURL($photo_landing_url_tw.$urn);
+$user_landing_url = $photo_landing_url.$uuid;
+$user_landing_url_fb = shortenURL($photo_landing_url.$uuid);
+$user_landing_url_tw = shortenURL($photo_landing_url.$uuid);
+
+
 
 // TEMPLATE OPTIONS
 
@@ -128,6 +191,7 @@ $style_dark_link = 'color:#000;text-decoration:underline;';
 
 $friends = $options[$cust_type]['friends'];
 $whats_on = $options[$cust_type]['whats_on'];
+
 $message = str_replace(
 	array(
 		'<p>',
@@ -155,8 +219,8 @@ $message = str_replace(
 	$options[$cust_type]['message']	
 );
 
-$fb_share_text = str_replace('##landing_link##', $user_landing_url_fb, $share_texts[$photo_type]);
-$tw_share_text = str_replace('##landing_link##', $user_landing_url_tw, $share_texts[$photo_type]);
+$fb_share_text = str_replace('##landing_link##', "", $share_texts[$photo_type]);
+$tw_share_text = str_replace('##landing_link##', $user['shortlink'], $share_texts[$photo_type]);
 
 	
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -170,10 +234,10 @@ $tw_share_text = str_replace('##landing_link##', $user_landing_url_tw, $share_te
 		<table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr><td>	
 			<table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
-			<tr><td background="<?php echo $asset_prefix ?>assets/img/background.gif" bgcolor="#f4f4f9" width="600" valign="top">
+			<tr><td background="https://www.yourskyphoto.co.uk/assets/img/background.gif" bgcolor="#f4f4f9" width="600" valign="top">
 			<!--[if gte mso 9]>
-			<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
-			<v:fill type="tile" src="<?php echo $asset_prefix ?>assets/img/background.gif" color="#f4f4f9" />
+			<v:rect xmlns:v="uuid:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
+			<v:fill type="tile" src="https://www.yourskyphoto.co.uk/assets/img/background.gif" color="#f4f4f9" />
 			<v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
 			<![endif]-->
 			<div>
@@ -192,23 +256,23 @@ $tw_share_text = str_replace('##landing_link##', $user_landing_url_tw, $share_te
 							
 								<table align="center" border="0" cellpadding="0" cellspacing="0" width="272">
 									<tr>	
-										<td background="<?php echo $asset_prefix ?>assets/img/box.gif" bgcolor="#f4f4f9" width="272" height="206" style="width:266px;height:200px;padding:1px 3px 5px 3px;" align="center">
+										<td background="https://www.yourskyphoto.co.uk/assets/img/box.gif" bgcolor="#f4f4f9" width="272" height="206" style="width:266px;height:200px;padding:1px 3px 5px 3px;" align="center">
 											<a href="<?php echo $user_landing_url ?>"><img src="<?php echo $small_photo_url ?>" alt="photo" width="266" height="200" style="width:266px;height:200px" /></a>
 										</td>
 									</tr>
 									<tr>
 										<td style="padding-top:15px">
-											<a href="https://www.facebook.com/dialog/feed?app_id=1429486397297383&display=popup&name=<?php echo urlencode($fb_share_text) ?>&redirect_uri=<?php echo urlencode($photo_landing_url_fb.$urn) ?>&picture=<?php echo urlencode($small_photo_url) ?>"><img src="<?php echo $asset_prefix ?>assets/img/share_facebook.gif" alt="Share" width="272" height="50" /></a>
+											<a href="http://www.yourskyphoto.co.uk/sharephoto.php?share_type=FACEBOOK&uuid=<?php echo $user['uuid']; ?>"><img src="https://www.yourskyphoto.co.uk/assets/img/share_facebook.gif" alt="Share" width="272" height="50" /></a>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<a href="https://twitter.com/intent/tweet?text=<?php echo urlencode($fb_share_text) ?>"><img src="<?php echo $asset_prefix ?>assets/img/share_twitter.gif" alt="Twitter" width="272" height="50" /></a>
+											<a href="http://www.yourskyphoto.co.uk/sharephoto.php?share_type=TWITTER&uuid=<?php echo $user['uuid']; ?>"><img src="https://www.yourskyphoto.co.uk/assets/img/share_twitter.gif" alt="Twitter" width="272" height="50" /></a>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<a href="<?php echo $original_photo_url ?>"><img src="<?php echo $asset_prefix ?>assets/img/download_photo.gif" alt="Download Photo" width="272" height="52" /></a>
+											<a href="https://www.yourskyphoto.co.uk/download.php?uuid=<?php echo $uuid ?>"><img src="https://www.yourskyphoto.co.uk/assets/img/download_photo.gif" alt="Download Photo" width="272" height="52" /></a>
 										</td>
 									</tr>
 								</table>

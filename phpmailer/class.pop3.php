@@ -73,7 +73,7 @@ class POP3 {
   public $POP3_TIMEOUT = 30;
 
   /**
-   * POP3 Carriage Return + Line Feed
+   * POP3 Carriage return + Line Feed
    * @var string
    */
   public $CRLF = "\r\n";

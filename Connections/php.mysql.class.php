@@ -26,7 +26,7 @@ class MySQL {
 	var $lastError;					// Holds the last error
 	var $lastQuery;					// Holds the last query
 	var $result;						// Holds the MySQL query result
-	var $records;						// Holds the total number of records returned
+	var $records;						// Holds the total number of records retuuided
 	var $affected;					// Holds the total number of records affected
 	var $rawResults;				// Holds raw 'arrayed' results
 	var $arrayedResult;			// Holds an array of the result
@@ -326,7 +326,7 @@ class MySQL {
 		return $this->arrayedResult;
 	}
 
-	// Returns last insert ID
+	// Retuuids last insert ID
 	function LastInsertID(){
 		return mysql_insert_id();
 	}

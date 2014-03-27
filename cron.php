@@ -5,11 +5,11 @@ $cust_type = 'tpc';
 if($_GET['cust_type']) $cust_type = $_GET['cust_type'];
 $photo_type = 'goth';
 if($_GET['photo_type']) $photo_type = $_GET['photo_type'];
-$urn = '19p3486719K4386';
+$uuid = '19p3486719K4386';
 $name = 'Becca';
 $small_photo_url = 'https://www.yourskyphoto.co.uk/assets/img/test_photo.jpg';
 $original_photo_url = 'https://www.yourskyphoto.co.uk/assets/img/test_photo.jpg';
-function update( $urn, $value )
+function update( $uuid, $value )
 {
     $db = new MySQL( DB, DBUSER, DBPASS );
     
@@ -24,7 +24,7 @@ function update( $urn, $value )
         "files_present" => $issynced,
         "$issynced" => $value 
     ), array(
-         "urn" => $urn 
+         "uuid" => $uuid 
     ) );
     
     
@@ -130,15 +130,15 @@ if ( count( $users ) > 0 ) {
         echo "<br/>unique id:" . $user[ 'uuid' ] . "<br/>";
         //echo "<br/>name:".$user['firstname'];
         $uuid      = $user[ 'uuid' ];
-		$result=$db->ExecuteSQL("insert ignore into stats (urn,added) values (".$user[ 'uuid' ].",NOW())");
+		$result=$db->ExecuteSQL("insert ignore into stats (uuid,added) values (".$user[ 'uuid' ].",NOW())");
         /*$result=$db->Insert(array("uuid"=>$user[ 'uuid' ] ),"stats",true);
 		if(!$result) {
 			die("error updating stats ".$db->lastQuery);
 		}*/
 
         
-			
-			//$result=$db->Update("userphoto",array("shortlink"=>$image_c_shortlink),array("uuid"=>$user[ 'uuid' ] ));
+		$image_c_shortlink=shortenURL("https://www.yourskyphoto.co.uk/photo/twitter/".$user[ 'uuid' ]);
+		$shortlinkRes=$db->Update("userphoto",array("shortlink"=>$image_c_shortlink),array("uuid"=>$user[ 'uuid' ] ));
 			
 	if(trim($user['existingBroadbandCustomer'])=="1" && trim($user['existingTVCustomer'])=="1") {
 		$cust_type = 'tpc';
@@ -158,21 +158,24 @@ if ( count( $users ) > 0 ) {
 		$photo_type="dsny";
 	}
 	
-	$urn = $user[ 'uuid' ];
+	$uuid = $user[ 'uuid' ];
 	$name = ucwords($user[ 'firstName' ]);
 	$small_photo_url = 'https://www.yourskyphoto.co.uk/' . makeThumb( "upload/" . $user[ 'filename' ], 280, "thumbs" );
 	$original_photo_url = 'https://www.yourskyphoto.co.uk/upload/'.$user[ 'filename' ];
 	
 	// template url
 	
-	$templateurl="https://www.yourskyphoto.co.uk/template.php?name=".$name."&cust_type=".$cust_type."&small_photo_url=".urlencode($small_photo_url)."&original_photo_url=".urlencode($original_photo_url)."&photo_type=".$photo_type."&urn=".$urn;
+	$templateurl="https://www.yourskyphoto.co.uk/template.php?&uuid=".$uuid;
 	
 	echo "####".$templateurl."#####";
 	
 	// GET HTML
-	$html = file_get_contents($templateurl);
+	$html = file_get_contents("https://www.yourskyphoto.co.uk/template.php?"."&uuid=".$uuid);
 
 	echo $html;
+	if(!$html) {
+		die("error reading template");
+	}
 		
 		// sends out the fuckin email
 		
@@ -209,7 +212,7 @@ if ( count( $users ) > 0 ) {
 	
 	$mail->MsgHTML($html);
 	
-	$mail->AddCustomHeader(sprintf( 'X-SMTPAPI: %s', '{"unique_args": {"urn":"'.$uuid.'"},"category": "yourskyphoto"}' ) );
+	$mail->AddCustomHeader(sprintf( 'X-SMTPAPI: %s', '{"unique_args": {"uuid":"'.$uuid.'"},"category": "yourskyphoto"}' ) );
 
 	//$basefile=urldecode(basename($_POST['file']));
 	//$mail->AddEmbeddedImage($_SERVER['DOCUMENT_ROOT']."/rendered/".$basefile,"logo_2u",$basefile); // attachment
@@ -233,4 +236,16 @@ if ( count( $users ) > 0 ) {
     }
 } else {
     echo "Nothingtododo";
-}
+} 
+?><!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--meta http-equiv="refresh" content="5"-->
+<title>Untitled Document</title>
+</head>
+
+<body>
+</body>
+</html>
+

@@ -20,10 +20,10 @@ Version 5.1 (October 20, 2009)
   * see the test/test_callback.php file for usage.
 * added "auto" identity functionality
   - can automatically add:
-    - Return-path (if Sender not set)
+    - return-path (if Sender not set)
     - Reply-To (if ReplyTo not set)
   - can be disabled:
-    - $mail->SetFrom('yourname@yourdomain.com','First Last',false);
+    - $mail->SetFrom('youuidame@yourdomain.com','First Last',false);
     - or by adding the $mail->Sender and/or $mail->ReplyTo properties
   Note: "auto" identity added to help with emails ending up in spam
   or junk boxes because of missing headers
@@ -259,7 +259,7 @@ Version 1.70 (Mon, Jun 20 2003)
 * Received header reformat
 * Helo variable default changed to $Hostname
 * Removed extra spaces in Content-Type definition (#667182)
-* Return-Path should be set to Sender when set
+* return-Path should be set to Sender when set
 * Adds Q or B encoding to headers when necessary
 * quoted-encoding should now encode NULs \000
 * Fixed encoding of body/AltBody (#553370)
@@ -348,7 +348,7 @@ Version 1.19 (Thu, Jun 21 2001)
 * mail() no longer passes a fifth parameter when not needed
 
 Version 1.15 (Fri, Jun 15 2001)
-[Note: these changes contributed by Patrice Fournier]
+[Note: these changes contributed by Patrice Fouuidier]
 * Changed all remaining \n to \r\n
 * Bcc: header no longer writen to message except
 when sent directly to sendmail

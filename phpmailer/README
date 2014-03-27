@@ -180,7 +180,7 @@ $mail = new PHPMailer();
 
 $mail->IsSMTP();                                      // set mailer to use SMTP
 $mail->Host = "smtp1.example.com;smtp2.example.com";  // specify main and backup server
-$mail->SMTPAuth = true;     // turn on SMTP authentication
+$mail->SMTPAuth = true;     // tuuid on SMTP authentication
 $mail->Username = "jswan";  // SMTP username
 $mail->Password = "secret"; // SMTP password
 

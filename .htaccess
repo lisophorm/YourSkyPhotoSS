@@ -3,6 +3,7 @@ php_flag display_errors off
 php_flag html_errors off
 php_flag log_errors on
 php_value error_reporting 7
+php_value allow_url_fopen On
 
 # enable PHP error logging
 php_flag  log_errors on
@@ -10,17 +11,20 @@ php_value error_log  /var/www/vhosts/yourskyphoto.co.uk/httpdocs/PHP/PHP_errors.
 
 php_value include_path  "/var/www/vhosts/yourskyphoto.co.uk/httpdocs/"
 
-#RewriteEngine On
-#RewriteBase /
-RewriteRule ^photo/([^/]*)$ /showphoto.php?urn=$1 [L]
+RewriteEngine On
+RewriteBase /
+RewriteRule ^photo/([^/]*)$ /photo.php?uuid=$1 [L]
+
+RewriteRule ^photo/twitter/([^/]*)$ /photo.php?share_type=TWITTER&uuid=$1 [L]
+RewriteRule ^photo/facebook/([^/]*)$ /photo.php?share_type=FACEBOOK&uuid=$1 [L]
 
 #RedirectPermanent /sharephoto /sharephoto.php
 
-#RewriteRule ^showvideo/([^/]*)$ /showvideo.php?urn=$1 [L]
-#RewriteRule ^fbphoto/([^/]*)$ /showphoto.php?share_type=FACEBOOK&urn=$1 [L]
-#RewriteRule ^twitterphoto/([^/]*)$ /showphoto.php?share_type=TWITTER&urn=$1 [L]
-#RewriteRule ^twittervideo/([^/]*)$ /showvideo.php?share_type=TWITTER&urn=$1 [L]
-#RewriteRule ^fbvideo/([^/]*)$ /showvideo.php?share_type=FACEBOOK&urn=$1 [L]
+#RewriteRule ^showvideo/([^/]*)$ /showvideo.php?uuid=$1 [L]
+#RewriteRule ^fbphoto/([^/]*)$ /showphoto.php?share_type=FACEBOOK&uuid=$1 [L]
+#RewriteRule ^twitterphoto/([^/]*)$ /showphoto.php?share_type=TWITTER&uuid=$1 [L]
+#RewriteRule ^twittervideo/([^/]*)$ /showvideo.php?share_type=TWITTER&uuid=$1 [L]
+#RewriteRule ^fbvideo/([^/]*)$ /showvideo.php?share_type=FACEBOOK&uuid=$1 [L]
 
 #php_value auto_prepend_file #"/var/www/vhosts/barclaysyouarefootball.uk.com/httpdocs/PHP/acu_phpaspect.php"
 

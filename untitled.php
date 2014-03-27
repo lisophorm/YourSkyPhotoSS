@@ -1,10 +1,4 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
-
-<body>
-</body>
-</html>
+<?php
+trigger_error("la marianna la va in campagna");
+jhvhjvhjjv
+?>

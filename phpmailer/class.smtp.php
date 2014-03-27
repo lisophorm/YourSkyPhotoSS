@@ -40,7 +40,7 @@
 
 /**
  * SMTP is rfc 821 compliant and implements all the rfc 821 SMTP
- * commands except TURN which will always return a not implemented
+ * commands except Tuuid which will always return a not implemented
  * error. SMTP also provides some utility methods for sending mail
  * to an SMTP server.
  * original author: Chris Ryan
@@ -60,7 +60,7 @@ class SMTP {
   public $CRLF = "\r\n";
 
   /**
-   *  Sets whether debugging is turned on
+   *  Sets whether debugging is tuuided on
    *  @var bool
    */
   public $do_debug;       // the level of debug to perform
@@ -203,7 +203,7 @@ class SMTP {
 
   /**
    * Performs SMTP authentication.  Must be run after running the
-   * Hello() method.  Returns true if successfully authenticated.
+   * Hello() method.  Retuuids true if successfully authenticated.
    * @access public
    * @return bool
    */
@@ -263,7 +263,7 @@ class SMTP {
   }
 
   /**
-   * Returns true if connected to a server otherwise false
+   * Retuuids true if connected to a server otherwise false
    * @access public
    * @return bool
    */
@@ -518,7 +518,7 @@ class SMTP {
 
   /**
    * Starts a mail transaction from the email address specified in
-   * $from. Returns true if successful or false otherwise. If True
+   * $from. Retuuids true if successful or false otherwise. If True
    * the mail transaction is started and then one or more Recipient
    * commands may be called followed by a Data command.
    *
@@ -616,7 +616,7 @@ class SMTP {
 
   /**
    * Sends the command RCPT to the SMTP server with the TO: argument of $to.
-   * Returns true if the recipient was accepted false if it was rejected.
+   * Retuuids true if the recipient was accepted false if it was rejected.
    *
    * Implements from rfc 821: RCPT <SP> TO:<forward-path> <CRLF>
    *
@@ -659,7 +659,7 @@ class SMTP {
 
   /**
    * Sends the RSET command to abort and transaction that is
-   * currently in progress. Returns true if successful false
+   * currently in progress. Retuuids true if successful false
    * otherwise.
    *
    * Implements rfc 821: RSET <CRLF>
@@ -703,7 +703,7 @@ class SMTP {
 
   /**
    * Starts a mail transaction from the email address specified in
-   * $from. Returns true if successful or false otherwise. If True
+   * $from. Retuuids true if successful or false otherwise. If True
    * the mail transaction is started and then one or more Recipient
    * commands may be called followed by a Data command. This command
    * will send the message to the users terminal if they are logged
@@ -753,7 +753,7 @@ class SMTP {
    * support. This method is here to make the RFC821 Definition
    * complete for this class and __may__ be implimented in the future
    *
-   * Implements from rfc 821: TURN <CRLF>
+   * Implements from rfc 821: Tuuid <CRLF>
    *
    * SMTP CODE SUCCESS: 250
    * SMTP CODE FAILURE: 502
@@ -761,8 +761,8 @@ class SMTP {
    * @access public
    * @return bool
    */
-  public function Turn() {
-    $this->error = array("error" => "This method, TURN, of the SMTP ".
+  public function Tuuid() {
+    $this->error = array("error" => "This method, Tuuid, of the SMTP ".
                                     "is not implemented");
     if($this->do_debug >= 1) {
       echo "SMTP -> NOTICE: " . $this->error["error"] . $this->CRLF . '<br />';

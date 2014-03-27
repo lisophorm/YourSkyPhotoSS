@@ -90,7 +90,7 @@ class PHPMailer {
   public $FromName          = 'Root User';
 
   /**
-   * Sets the Sender email (Return-Path) of the message.  If not empty,
+   * Sets the Sender email (return-Path) of the message.  If not empty,
    * will be sent via -f to sendmail or as 'MAIL FROM' in smtp mode.
    * @var string
    */
@@ -152,7 +152,7 @@ class PHPMailer {
 
   /**
    * Sets the hostname to use in Message-Id and Received headers
-   * and as default HELO string. If empty, the value returned
+   * and as default HELO string. If empty, the value retuuided
    * by SERVER_NAME is used or 'localhost.localdomain'.
    * @var string
    */
@@ -538,7 +538,7 @@ class PHPMailer {
 
   /**
    * Creates message and assigns Mailer. If the message is
-   * not sent successfully then it returns false.  Use the ErrorInfo
+   * not sent successfully then it retuuids false.  Use the ErrorInfo
    * variable to view description of the error.
    * @return bool
    */
@@ -692,7 +692,7 @@ class PHPMailer {
 
   /**
    * Sends mail via SMTP using PhpSMTP
-   * Returns false if there is a bad MAIL FROM, RCPT, or DATA input.
+   * Retuuids false if there is a bad MAIL FROM, RCPT, or DATA input.
    * @param string $header The message headers
    * @param string $body The message body
    * @uses SMTP
@@ -765,7 +765,7 @@ class PHPMailer {
 
   /**
    * Initiates a connection to an SMTP server.
-   * Returns false if the operation failed.
+   * Retuuids false if the operation failed.
    * @uses SMTP
    * @access public
    * @return bool
@@ -843,7 +843,7 @@ class PHPMailer {
 
   /**
   * Sets the language for all class error messages.
-  * Returns false if it cannot load the language file.  The default language is English.
+  * Retuuids false if it cannot load the language file.  The default language is English.
   * @param string $langcode ISO 639-1 2-character language code (e.g. Portuguese: "br")
   * @param string $lang_path Path to the language file directory
   * @access public
@@ -875,11 +875,11 @@ class PHPMailer {
       $l = @include $lang_path.'phpmailer.lang-'.$langcode.'.php';
     }
     $this->language = $PHPMAILER_LANG;
-    return ($l == true); //Returns false if language not found
+    return ($l == true); //Retuuids false if language not found
   }
 
   /**
-  * Return the current array of language strings
+  * return the current array of language strings
   * @return array
   */
   public function GetTranslations() {
@@ -1081,9 +1081,9 @@ class PHPMailer {
 
     $result .= $this->HeaderLine('Date', self::RFCDate());
     if($this->Sender == '') {
-      $result .= $this->HeaderLine('Return-Path', trim($this->From));
+      $result .= $this->HeaderLine('return-Path', trim($this->From));
     } else {
-      $result .= $this->HeaderLine('Return-Path', trim($this->Sender));
+      $result .= $this->HeaderLine('return-Path', trim($this->Sender));
     }
 
     // To be created automatically by mail()
@@ -1150,7 +1150,7 @@ class PHPMailer {
   }
 
   /**
-   * Returns the message MIME.
+   * Retuuids the message MIME.
    * @access public
    * @return string
    */
@@ -1184,7 +1184,7 @@ class PHPMailer {
   }
 
   /**
-   * Assembles the message body.  Returns an empty string on failure.
+   * Assembles the message body.  Retuuids an empty string on failure.
    * @access public
    * @return string The assembled message body
    */
@@ -1258,7 +1258,7 @@ class PHPMailer {
   }
 
   /**
-   * Returns the start of a message boundary.
+   * Retuuids the start of a message boundary.
    * @access private
    */
   private function GetBoundary($boundary, $charSet, $contentType, $encoding) {
@@ -1282,7 +1282,7 @@ class PHPMailer {
   }
 
   /**
-   * Returns the end of a message boundary.
+   * Retuuids the end of a message boundary.
    * @access private
    */
   private function EndBoundary($boundary) {
@@ -1311,7 +1311,7 @@ class PHPMailer {
   }
 
   /**
-   *  Returns a formatted header line.
+   *  Retuuids a formatted header line.
    * @access public
    * @return string
    */
@@ -1320,7 +1320,7 @@ class PHPMailer {
   }
 
   /**
-   * Returns a formatted mail line.
+   * Retuuids a formatted mail line.
    * @access public
    * @return string
    */
@@ -1334,7 +1334,7 @@ class PHPMailer {
 
   /**
    * Adds an attachment from a path on the filesystem.
-   * Returns false if the file could not be found
+   * Retuuids false if the file could not be found
    * or accessed.
    * @param string $path Path to the attachment.
    * @param string $name Overrides the attachment name.
@@ -1377,7 +1377,7 @@ class PHPMailer {
   }
 
   /**
-  * Return the current array of attachments
+  * return the current array of attachments
   * @return array
   */
   public function GetAttachments() {
@@ -1386,12 +1386,12 @@ class PHPMailer {
 
   /**
    * Attaches all fs, string, and binary attachments to the message.
-   * Returns an empty string on failure.
+   * Retuuids an empty string on failure.
    * @access private
    * @return string
    */
   private function AttachAll() {
-    // Return text of body
+    // return text of body
     $mime = array();
     $cidUniq = array();
     $incl = array();
@@ -1450,7 +1450,7 @@ class PHPMailer {
 
   /**
    * Encodes attachment in requested format.
-   * Returns an empty string on failure.
+   * Retuuids an empty string on failure.
    * @param string $path The full path to the file
    * @param string $encoding The encoding to use; one of 'base64', '7bit', '8bit', 'binary', 'quoted-printable'
    * @see EncodeFile()
@@ -1483,7 +1483,7 @@ class PHPMailer {
 
   /**
    * Encodes string to requested format.
-   * Returns an empty string on failure.
+   * Retuuids an empty string on failure.
    * @param string $str The text to encode
    * @param string $encoding The encoding to use; one of 'base64', '7bit', '8bit', 'binary', 'quoted-printable'
    * @access public
@@ -1809,7 +1809,7 @@ class PHPMailer {
   }
 
   /**
-   * Returns true if an inline attachment is present.
+   * Retuuids true if an inline attachment is present.
    * @access public
    * @return bool
    */
@@ -1827,7 +1827,7 @@ class PHPMailer {
   /////////////////////////////////////////////////
 
   /**
-   * Clears all recipients assigned in the TO array.  Returns void.
+   * Clears all recipients assigned in the TO array.  Retuuids void.
    * @return void
    */
   public function ClearAddresses() {
@@ -1838,7 +1838,7 @@ class PHPMailer {
   }
 
   /**
-   * Clears all recipients assigned in the CC array.  Returns void.
+   * Clears all recipients assigned in the CC array.  Retuuids void.
    * @return void
    */
   public function ClearCCs() {
@@ -1849,7 +1849,7 @@ class PHPMailer {
   }
 
   /**
-   * Clears all recipients assigned in the BCC array.  Returns void.
+   * Clears all recipients assigned in the BCC array.  Retuuids void.
    * @return void
    */
   public function ClearBCCs() {
@@ -1860,7 +1860,7 @@ class PHPMailer {
   }
 
   /**
-   * Clears all recipients assigned in the ReplyTo array.  Returns void.
+   * Clears all recipients assigned in the ReplyTo array.  Retuuids void.
    * @return void
    */
   public function ClearReplyTos() {
@@ -1869,7 +1869,7 @@ class PHPMailer {
 
   /**
    * Clears all recipients assigned in the TO, CC and BCC
-   * array.  Returns void.
+   * array.  Retuuids void.
    * @return void
    */
   public function ClearAllRecipients() {
@@ -1881,7 +1881,7 @@ class PHPMailer {
 
   /**
    * Clears all previously set filesystem, string, and binary
-   * attachments.  Returns void.
+   * attachments.  Retuuids void.
    * @return void
    */
   public function ClearAttachments() {
@@ -1889,7 +1889,7 @@ class PHPMailer {
   }
 
   /**
-   * Clears all custom headers.  Returns void.
+   * Clears all custom headers.  Retuuids void.
    * @return void
    */
   public function ClearCustomHeaders() {
@@ -1917,7 +1917,7 @@ class PHPMailer {
   }
 
   /**
-   * Returns the proper RFC 822 formatted date.
+   * Retuuids the proper RFC 822 formatted date.
    * @access public
    * @return string
    * @static
@@ -1933,7 +1933,7 @@ class PHPMailer {
   }
 
   /**
-   * Returns the server hostname or 'localhost.localdomain' if unknown.
+   * Retuuids the server hostname or 'localhost.localdomain' if unknown.
    * @access private
    * @return string
    */
@@ -1950,7 +1950,7 @@ class PHPMailer {
   }
 
   /**
-   * Returns a message in the appropriate language.
+   * Retuuids a message in the appropriate language.
    * @access private
    * @return string
    */
@@ -1967,7 +1967,7 @@ class PHPMailer {
   }
 
   /**
-   * Returns true if an error occurred.
+   * Retuuids true if an error occurred.
    * @access public
    * @return bool
    */
@@ -1997,7 +1997,7 @@ class PHPMailer {
   }
 
   /**
-   * Evaluates the message and returns modifications for inline images and backgrounds
+   * Evaluates the message and retuuids modifications for inline images and backgrounds
    * @access public
    * @return $message
    */

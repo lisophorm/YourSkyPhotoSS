@@ -25,7 +25,7 @@ $mail->SMTPAuth      = true;                  // enable SMTP authentication
 $mail->SMTPKeepAlive = true;                  // SMTP connection will not close after each email sent
 $mail->Host          = "mail.yourdomain.com"; // sets the SMTP server
 $mail->Port          = 26;                    // set the SMTP port for the GMAIL server
-$mail->Username      = "yourname@yourdomain"; // SMTP account username
+$mail->Username      = "youuidame@yourdomain"; // SMTP account username
 $mail->Password      = "yourpassword";        // SMTP account password
 $mail->SetFrom('list@mydomain.com', 'List manager');
 $mail->AddReplyTo('list@mydomain.com', 'List manager');
